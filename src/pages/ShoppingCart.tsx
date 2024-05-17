@@ -1,10 +1,11 @@
+import LayoutA from "@/components/layouts/LayoutA";
 import ShoppingCartContent from "@/components/features/ShoppingCartContent";
 
 const ShoppingCart = () => {
   return (
-    <div>
+    <LayoutA>
       <ShoppingCartContent />
-    </div>
+    </LayoutA>
   );
 };
 

@@ -1,8 +1,11 @@
+import ContentLayoutA from "@/components/layouts/ContentLayoutA";
+import ContentTitle from "@/components/ui/ContentTitle";
+
 const ShoppingCartContent = () => {
   return (
-    <div>
-      <p>ShoppingCartContent</p>
-    </div>
+    <ContentLayoutA>
+      <ContentTitle title="장바구니" />
+    </ContentLayoutA>
   );
 };
 

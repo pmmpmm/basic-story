@@ -1,10 +1,11 @@
+import LayoutA from "@/components/layouts/LayoutA";
 import ProductsContent from "@/components/features/ProductsContent";
 
 const Products = () => {
   return (
-    <div>
+    <LayoutA>
       <ProductsContent />
-    </div>
+    </LayoutA>
   );
 };
 

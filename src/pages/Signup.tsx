@@ -1,10 +1,11 @@
+import LayoutA from "@/components/layouts/LayoutA";
 import SignupContent from "@/components/features/SignupContent";
 
 const Signup = () => {
   return (
-    <div>
+    <LayoutA>
       <SignupContent />
-    </div>
+    </LayoutA>
   );
 };
 

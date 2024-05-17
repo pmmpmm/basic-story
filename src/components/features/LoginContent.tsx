@@ -1,8 +1,11 @@
+import ContentLayoutA from "@/components/layouts/ContentLayoutA";
+import ContentTitle from "@/components/ui/ContentTitle";
+
 const LoginContent = () => {
   return (
-    <div>
-      <p>LoginContent</p>
-    </div>
+    <ContentLayoutA>
+      <ContentTitle title="로그인" />
+    </ContentLayoutA>
   );
 };
 

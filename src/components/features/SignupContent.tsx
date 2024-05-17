@@ -1,8 +1,11 @@
+import ContentLayoutA from "@/components/layouts/ContentLayoutA";
+import ContentTitle from "@/components/ui/ContentTitle";
+
 const SignupContent = () => {
   return (
-    <div>
-      <p>SignupContent</p>
-    </div>
+    <ContentLayoutA>
+      <ContentTitle title="회원가입" />
+    </ContentLayoutA>
   );
 };
 

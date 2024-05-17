@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       padding: {
-        "df-A": "1rem"
+        "dfX-A": "1rem"
       }
     }
   },
