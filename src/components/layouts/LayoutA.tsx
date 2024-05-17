@@ -1,7 +1,9 @@
+import Header from "@/components/ui/Header";
+
 const LayoutA = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <header>header</header>
+      <Header />
       <div>{children}</div>
     </div>
   );

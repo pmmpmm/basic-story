@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {}
+    extend: {
+      padding: {
+        "df-A": "1rem"
+      }
+    }
   },
   plugins: []
 };
