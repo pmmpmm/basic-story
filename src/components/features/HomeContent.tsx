@@ -1,10 +1,8 @@
-import ContentLayoutA from "@/components/layouts/ContentLayoutA";
-
 const HomeContent = () => {
   return (
-    <ContentLayoutA>
+    <div>
       <p className="">HomeContent</p>
-    </ContentLayoutA>
+    </div>
   );
 };
 

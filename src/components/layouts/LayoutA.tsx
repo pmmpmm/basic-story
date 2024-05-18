@@ -8,6 +8,7 @@ const LayoutA = ({ children }: { children: React.ReactNode }) => {
       <ContainerLayoutA>
         <Header />
       </ContainerLayoutA>
+
       <ContainerLayoutA className="border-b border-solid border-gray-100">
         <CategoryNav />
       </ContainerLayoutA>

@@ -22,7 +22,7 @@ const CategoryNav = () => {
         <button
           key={`category-${idx}`}
           value={nav.value}
-          className={`px-2 ${activeNav === nav.value ? "font-bold text-gray-900" : txColor}`}
+          className={`px-2 font-medium ${activeNav === nav.value ? "font-extrabold text-gray-950" : txColor}`}
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             const value = (e.target as HTMLButtonElement).value;
             navigate(`/products/${value}`);
