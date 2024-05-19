@@ -5,7 +5,7 @@ interface layoutAProps {
 
 const ContainerLayoutA = ({ children, className }: layoutAProps) => {
   return (
-    <div className={`w-full min-w-[1024px]` + className && className}>
+    <div className={`w-full min-w-[1024px] ${className && className}`}>
       <div className="w-full min-w-[1024px] max-w-[1280px] m-auto px-dfX-A">{children}</div>
     </div>
   );
