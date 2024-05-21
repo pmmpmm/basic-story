@@ -1,43 +1,33 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, authService } from "@/Firebase";
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import firebase from "@/api/firebase";
+import { UserInfo } from "@/api/firebase";
 import Logo from "@/components/ui/Logo";
+import { useQuery } from "@tanstack/react-query";
+
+type User = UserInfo;
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
-  const [userInfo, setUserInfo] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [admin, setAdmin] = useState([]);
   const navigator = useNavigate();
+  // firebase.adminUser().then((res) => {
+  //   console.log(res);
+  // });
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLogin(true);
-        setUserInfo(user.displayName);
-      } else {
-        setIsLogin(false);
-      }
+    firebase.onUserStateChange((user) => {
+      setUser(user);
     });
   }, []);
 
   const handleLogin = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((data) => {
-        setIsLogin(true);
-        setUserInfo(data.user.displayName);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    firebase.login();
   };
 
   const handleLoout = () => {
-    signOut(auth)
-      .then(() => {
-        setIsLogin(false);
-      })
-      .catch((error) => console.log(error));
+    firebase.logout();
   };
 
   return (
@@ -59,7 +49,7 @@ const Header = () => {
           </em>
         </button>
 
-        {!isLogin && (
+        {!user && (
           <button
             onClick={handleLogin}
             className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
@@ -67,19 +57,22 @@ const Header = () => {
             로그인
           </button>
         )}
-        {isLogin && (
+        {user && (
           <>
             <button className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 ">
-              {userInfo} 님
+              {user.displayName} 님
             </button>
-            <button
-              onClick={() => {
-                navigator("/products/new");
-              }}
-              className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
-            >
-              상품 등록
-            </button>
+            {admin && (
+              <button
+                onClick={() => {
+                  navigator("/products/new");
+                }}
+                className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
+              >
+                상품 등록
+              </button>
+            )}
+
             <button
               onClick={handleLoout}
               className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
