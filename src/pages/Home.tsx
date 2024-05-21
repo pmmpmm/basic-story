@@ -1,5 +1,5 @@
-import HomeContent from "@/components/features/HomeContent";
 import LayoutA from "@/components/layouts/LayoutA";
+import HomeContent from "@/components/features/HomeContent";
 
 const Home = () => {
   return (
