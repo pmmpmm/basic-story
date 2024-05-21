@@ -1,7 +1,7 @@
 import ContentLayoutA from "@/components/layouts/ContentLayoutA";
 import ContentTitle from "@/components/ui/ContentTitle";
 
-const ShoppingCartContent = () => {
+const MyCartContent = () => {
   return (
     <ContentLayoutA>
       <ContentTitle title="장바구니" />
@@ -9,4 +9,4 @@ const ShoppingCartContent = () => {
   );
 };
 
-export default ShoppingCartContent;
+export default MyCartContent;

@@ -1,29 +1,86 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import firebase from "@/api/firebase";
+import { UserInfo } from "@/api/firebase";
 import Logo from "@/components/ui/Logo";
+import { useQuery } from "@tanstack/react-query";
+
+type User = UserInfo;
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [admin, setAdmin] = useState([]);
+  const navigator = useNavigate();
+  // firebase.adminUser().then((res) => {
+  //   console.log(res);
+  // });
+
+  useEffect(() => {
+    firebase.onUserStateChange((user) => {
+      setUser(user);
+    });
+  }, []);
+
+  const handleLogin = () => {
+    firebase.login();
+  };
+
+  const handleLoout = () => {
+    firebase.logout();
+  };
+
   return (
-    <header className="flex justify-between py-3">
+    <header className="flex justify-between py-4">
       <Link to="/">
         <Logo />
       </Link>
 
-      <div>
-        <Link
-          to="/shopping-cart"
-          className="text-[13px] mr-3 after:content-[''] after:inline-block after:w-[1px] after:h-[10px] after:ml-3 after:bg-gray-300 "
+      <div className="leading-5">
+        <button
+          onClick={() => {
+            navigator("/cart");
+          }}
+          className="text-[13px]"
         >
-          장바구니
-        </Link>
-        <Link
-          to="/login"
-          className="text-[13px] mr-3 after:content-[''] after:inline-block after:w-[1px] after:h-[10px] after:ml-3 after:bg-gray-300 "
-        >
-          로그인
-        </Link>
-        <Link to="/signup" className="text-[13px]">
-          회원가입
-        </Link>
+          <span className="inline-block leading-5">장바구니</span>
+          <em className="inline-block min-w-4 ml-[4px] px-[3px] py-[2px] bg-red-600 text-[10px] not-italic font-bold text-white leading-3 align-text-bottom rounded-full">
+            5
+          </em>
+        </button>
+
+        {!user && (
+          <button
+            onClick={handleLogin}
+            className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
+          >
+            로그인
+          </button>
+        )}
+        {user && (
+          <>
+            <button className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 ">
+              {user.displayName} 님
+            </button>
+            {admin && (
+              <button
+                onClick={() => {
+                  navigator("/products/new");
+                }}
+                className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
+              >
+                상품 등록
+              </button>
+            )}
+
+            <button
+              onClick={handleLoout}
+              className="text-[13px] ml-3 before:content-[''] before:inline-block before:w-[1px] before:h-[10px] before:mr-3 before:bg-gray-300 "
+            >
+              로그아웃
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

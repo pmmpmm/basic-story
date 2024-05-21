@@ -6,7 +6,9 @@ import Home from "@/pages/Home";
 import Signup from "@/pages/Signup";
 import Login from "@/pages/Login";
 import Products from "@/pages/Products";
-import ShoppingCart from "@/pages/ShoppingCart";
+import ProductDetail from "@/pages/ProductDetail";
+import NewProducts from "@/pages/NewProducts";
+import MyCart from "@/pages/MyCart";
 import NotFound from "@/pages/NotFound";
 
 const App = () => {
@@ -22,7 +24,9 @@ const App = () => {
               { path: "/signup", element: <Signup /> },
               { path: "/login", element: <Login /> },
               { path: "/products/:category", element: <Products /> },
-              { path: "/shopping-cart", element: <ShoppingCart /> },
+              { path: "/products/:category/:id", element: <ProductDetail /> },
+              { path: "/products/new", element: <NewProducts /> },
+              { path: "/cart", element: <MyCart /> },
               { path: "*", element: <NotFound /> }
             ]
           }

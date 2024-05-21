@@ -17,7 +17,7 @@ const CategoryNav = () => {
   ];
 
   return (
-    <nav className="flex justify-center gap-16 px-dfX-A pt-4 pb-3">
+    <nav className="flex justify-center gap-16 px-dfX-A pt-5 pb-4 ">
       {navs.map((nav, idx) => (
         <button
           key={`category-${idx}`}
