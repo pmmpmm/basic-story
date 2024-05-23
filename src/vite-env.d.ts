@@ -4,6 +4,9 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_AUTH_DOMAIN: string;
   readonly VITE_FIREBASE_DB_URL: string;
   readonly VITE_FIREBASE_PROJECT_ID: string;
+  readonly VITE_FIREBASE_ACCESS_TOKEN: string;
+  readonly VITE_FIREBASE_REFRESH_TOKEN: string;
+  readonly VITE_ROLE: string;
 }
 
 interface ImportMeta {
