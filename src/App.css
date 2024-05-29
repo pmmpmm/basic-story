@@ -12,4 +12,12 @@
   body {
     @apply text-sm text-gray-900;
   }
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply align-middle cursor-pointer;
+  }
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    @apply pl-1 align-middle cursor-pointer;
+  }
 }
