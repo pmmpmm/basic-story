@@ -7,6 +7,8 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_ACCESS_TOKEN: string;
   readonly VITE_FIREBASE_REFRESH_TOKEN: string;
   readonly VITE_ROLE: string;
+  readonly VITE_CLOUDINARY_PRESET_NAME: string;
+  readonly VITE_CLOUDINARY_URL: string;
 }
 
 interface ImportMeta {

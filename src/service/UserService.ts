@@ -1,8 +1,6 @@
-import { child } from "firebase/database";
-import { get } from "firebase/database";
+import { child, get, ref } from "firebase/database";
 import { UserRole } from "@/domain/UserDomain";
-import { ref } from "firebase/database";
-import { firebaseDb } from "./FirebaseClient";
+import { firebaseDb } from "@/service/FirebaseClient";
 
 const getUserRole = async (uid: string): Promise<UserRole> => {
   const dbRef = ref(firebaseDb);
