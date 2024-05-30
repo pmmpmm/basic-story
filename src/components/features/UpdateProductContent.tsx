@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ProductDomain } from "@/domain/ProductDomain";
 import AdminUserService from "@/service/AdminUserService";
 import ContentLayoutA from "@/components/layouts/ContentLayoutA";
@@ -11,13 +10,29 @@ import FormGroup from "@/components/ui/FormGroup";
 import Radio from "@/components/ui/Radio";
 import CheckBox from "@/components/ui/CheckBox";
 import Button from "@/components/ui/Button";
+import { useQuery } from "@tanstack/react-query";
 
-const NewProductsContent = () => {
+const UpdateProductContent = () => {
+  ///products/update?id=07d90d98-42df-48be-926e-3010108fcc91
+  const { search } = useLocation();
+  const id = new URLSearchParams(search).get("id") as string;
+
+  const { data } = useQuery({
+    queryKey: ["products", id],
+    queryFn: AdminUserService.getProducts,
+    enabled: !!id
+  });
+
+  useEffect(() => {
+    if (data) {
+      setProduct(data);
+    }
+  }, [data]);
   // 상품 정보 세팅
   const [product, setProduct] = useState<ProductDomain>({
     category: "top",
     image: "",
-    id: uuidv4(),
+    id: id,
     title: "",
     options: [],
     price: "",
@@ -98,7 +113,7 @@ const NewProductsContent = () => {
         </div>
       )}
 
-      <ContentTitle title="상품등록" />
+      <ContentTitle title="상품수정" />
       <div className="flex gap-x-10 w-full">
         <div className="flex flex-col gap-y-5 basis-full">
           <TextField type="file" label="상품 이미지" accept="image/*" name="image" onChange={handleTextfields} />
@@ -206,7 +221,7 @@ const NewProductsContent = () => {
 
       <ContentBottomLayoutA>
         <Button
-          text={isUploading ? "상품 등록 중 ...." : "상품 등록"}
+          text={isUploading ? "상품 등록 중 ...." : "상품수정"}
           size="full"
           variant="contain"
           onClick={submitNewProduct}
@@ -217,4 +232,4 @@ const NewProductsContent = () => {
   );
 };
 
-export default NewProductsContent;
+export default UpdateProductContent;

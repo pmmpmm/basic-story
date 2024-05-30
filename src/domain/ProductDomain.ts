@@ -8,3 +8,7 @@ export type ProductDomain = {
   price: string;
   title: string;
 };
+
+// export type ProductShortDomain={
+//   category: string;
+// }

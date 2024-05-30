@@ -1,4 +1,6 @@
 import { Navigate } from "react-router-dom";
+import { UserRole } from "@/domain/UserDomain";
+
 interface PouterProps {
   requireAdmin?: boolean;
   element: React.ReactElement;
@@ -7,7 +9,7 @@ interface PouterProps {
 const ProtectedRoute = ({ requireAdmin, element }: PouterProps) => {
   const userRole = localStorage.getItem(import.meta.env.VITE_ROLE);
 
-  if (!userRole || (requireAdmin && userRole === "user")) {
+  if (!userRole || (requireAdmin && userRole === UserRole.USER)) {
     return <Navigate to="/" replace />;
   }
   return element;

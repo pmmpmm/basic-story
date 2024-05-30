@@ -8,6 +8,8 @@ const getProducts = async () => {
   return get(child(dbRef, `products`))
     .then((snapshot) => {
       if (snapshot.exists()) {
+        console.log(snapshot.val());
+
         return Object.values(snapshot.val()) as ProductDomain[];
       } else {
         console.log("No data available");

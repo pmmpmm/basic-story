@@ -13,9 +13,9 @@ const ProductCard = ({ category, image, title, price }: ProductProps) => {
       </div>
       <div className="mt-2">
         <p className="font-semibold">{title}</p>
-        <div className="flex flex-row justify-between text-xs font-">
-          <p className=" ">{category}</p>
-          <p className=" ">{price}</p>
+        <div className="flex flex-row justify-between text-xs font-light">
+          <p>{category}</p>
+          <p>{price}</p>
         </div>
       </div>
     </div>
