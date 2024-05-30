@@ -9,6 +9,7 @@ import ProductDetail from "@/pages/ProductDetail";
 import NewProducts from "@/pages/NewProducts";
 import MyCart from "@/pages/MyCart";
 import NotFound from "@/pages/NotFound";
+import UpdateProduct from "@/pages/UpdateProduct";
 // import Signup from "@/pages/Signup";
 // import Login from "@/pages/Login";
 
@@ -25,6 +26,7 @@ const App = () => {
               { path: "/products/:category", element: <Products /> },
               { path: "/products/:category/:id", element: <ProductDetail /> },
               { path: "/products/new", element: <ProtectedRoute requireAdmin element={<NewProducts />} /> },
+              { path: "/products/update", element: <ProtectedRoute requireAdmin element={<UpdateProduct />} /> },
               { path: "/cart", element: <ProtectedRoute element={<MyCart />} /> },
               { path: "*", element: <NotFound /> }
             ]
