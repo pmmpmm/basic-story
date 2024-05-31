@@ -45,11 +45,11 @@ const ProductsContent = () => {
   return (
     <ContentLayoutA>
       <ContentTitle title={title} />
-      <div className="grid grid-cols-4 gap-x-4 gap-y-7">
+      <div className="grid grid-cols-4 gap-x-1.5 gap-y-7">
         {data?.map((product, idx) => (
           <ProductCard
             key={`product-${idx}`}
-            category={product.category}
+            id={product.id}
             image={product.image}
             title={product.title}
             price={product.price}
