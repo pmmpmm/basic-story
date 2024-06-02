@@ -19,7 +19,7 @@ const HomeContent = () => {
       </div>
       <div>
         <ContentLayoutA>
-          <div className="grid grid-cols-4 gap-x-1.5 gap-y-7">
+          <div className="grid grid-cols-3 gap-x-1.5 gap-y-7">
             {data?.map((product, idx) => (
               <ProductCard
                 key={`product-${idx}`}

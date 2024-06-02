@@ -24,9 +24,9 @@ const App = () => {
             children: [
               { path: "/", element: <Home /> },
               { path: "/products/:category", element: <Products /> },
-              { path: "/products/:category/:id", element: <ProductDetail /> },
               { path: "/products/new", element: <ProtectedRoute requireAdmin element={<NewProducts />} /> },
               { path: "/products/update", element: <ProtectedRoute requireAdmin element={<UpdateProduct />} /> },
+              { path: "/product/:id", element: <ProductDetail /> },
               { path: "/cart", element: <ProtectedRoute element={<MyCart />} /> },
               { path: "*", element: <NotFound /> }
             ]

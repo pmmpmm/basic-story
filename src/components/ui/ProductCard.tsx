@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface ProductProps {
   id: string;
   image: string;
@@ -7,7 +9,7 @@ interface ProductProps {
 
 const ProductCard = ({ id, image, title, price }: ProductProps) => {
   return (
-    <div>
+    <Link to={`/product/${id}`}>
       <div>
         <img src={image} alt="상품 이미지" />
       </div>
@@ -17,7 +19,7 @@ const ProductCard = ({ id, image, title, price }: ProductProps) => {
           <p>{price}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
