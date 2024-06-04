@@ -21,8 +21,8 @@ const CategoryNav = () => {
           <button
             key={`category-${idx}`}
             value={nav.value}
-            className={`px-2 font-medium relative
-          ${activeNav === nav.value ? "font-extrabold text-gray-950 before:content-[''] before:block before:w-[calc(100%-1rem)] before:h-[1px] before:mx-2 before:bg-gray-950 before:absolute before:left-0 before:-bottom-0" : "text-gray-400"}
+            className={`text-[15px] px-2 relative
+          ${activeNav === nav.value ? "font-extrabold text-black before:content-[''] before:block before:w-[calc(100%-1rem)] before:h-[1px] before:mx-2 before:bg-gray-950 before:absolute before:left-0 before:-bottom-0" : "font-medium "}
           `}
             onClick={(e: React.MouseEvent<HTMLElement>) => {
               const value = (e.target as HTMLButtonElement).value;
@@ -36,7 +36,7 @@ const CategoryNav = () => {
           <button
             key={`category-${idx}`}
             value={nav.value}
-            className={`px-2 font-medium text-gray-800`}
+            className={`text-[15px] px-2 font-medium text-gray-800`}
             onClick={(e: React.MouseEvent<HTMLElement>) => {
               const value = (e.target as HTMLButtonElement).value;
               navigate(`/products/${value}`);
